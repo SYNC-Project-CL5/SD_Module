@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ZCL_ZEA_SD090_DPC</title>
+<style type="text/css">
+.code{ font-family:"Courier New", Courier, monospace; color:#000; font-size:14px; background-color:#F2F4F7 }
+  .codeComment {font-family:"Courier New", Courier, monospace; color:#0000F0; font-size:14px; background-color:#F2F4F7 }
+  .normalBold{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:800 }
+  .normalBoldLarge{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for class: ZCL_ZEA_SD090_DPC</h2>
+<h3> Description: Data Provider Base Class</h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="codeComment">
+**************************************************************************<br />
+*   Class attributes.                                                    *<br />
+**************************************************************************<br />
+   </div>
+   <div class="code">
+Instantiation: Public<br />
+Message class: <br />
+State: Implemented<br />
+Final Indicator: <br />
+R/3 Release: 754<br />
+<br />
+   </div>
+   <div class="codeComment">
+**************************************************************************<br />
+*   Public section of class.                                             *<br />
+**************************************************************************<br />
+   </div>
+   <div class="code">
+class ZCL_ZEA_SD090_DPC definition<br />
+&nbsp;&nbsp;public<br />
+&nbsp;&nbsp;inheriting&nbsp;from&nbsp;/IWBEP/CL_MGW_PUSH_ABS_DATA<br />
+&nbsp;&nbsp;abstract<br />
+&nbsp;&nbsp;create&nbsp;public&nbsp;.<br />
+<br />
+public section.<br />
+<br />
+&nbsp;&nbsp;interfaces&nbsp;/IWBEP/IF_SB_DPC_COMM_SERVICES&nbsp;.<br />
+&nbsp;&nbsp;interfaces&nbsp;/IWBEP/IF_SB_GEN_DPC_INJECTION&nbsp;.<br />
+<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="public_methods//iwbep/if_mgw_appl_srv_runtime~get_entityset.html">/IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITYSET</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;redefinition&nbsp;.<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="public_methods//iwbep/if_mgw_appl_srv_runtime~get_entity.html">/IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITY</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;redefinition&nbsp;.<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="public_methods//iwbep/if_mgw_appl_srv_runtime~update_entity.html">/IWBEP/IF_MGW_APPL_SRV_RUNTIME~UPDATE_ENTITY</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;redefinition&nbsp;.<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="public_methods//iwbep/if_mgw_appl_srv_runtime~create_entity.html">/IWBEP/IF_MGW_APPL_SRV_RUNTIME~CREATE_ENTITY</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;redefinition&nbsp;.<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="public_methods//iwbep/if_mgw_appl_srv_runtime~delete_entity.html">/IWBEP/IF_MGW_APPL_SRV_RUNTIME~DELETE_ENTITY</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;redefinition&nbsp;.<br />
+<br />
+   </div>
+   <div class="codeComment">
+**************************************************************************<br />
+*   Private section of class.                                            *<br />
+**************************************************************************<br />
+   </div>
+   <div class="code">
+private section.<br />
+<br />
+   </div>
+   <div class="codeComment">
+**************************************************************************<br />
+*   Protected section of class.                                          *<br />
+**************************************************************************<br />
+   </div>
+   <div class="code">
+protected section.<br />
+<br />
+&nbsp;&nbsp;data&nbsp;mo_injection&nbsp;type&nbsp;ref&nbsp;to&nbsp;/IWBEP/IF_SB_GEN_DPC_INJECTION&nbsp;.<br />
+<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="protected_methods/priceset_create_entity.html">PRICESET_CREATE_ENTITY</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;importing<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_SET_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_SOURCE_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_KEY_TAB&nbsp;type&nbsp;/IWBEP/T_MGW_NAME_VALUE_PAIR<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IO_TECH_REQUEST_CONTEXT&nbsp;type&nbsp;ref&nbsp;to&nbsp;/IWBEP/IF_MGW_REQ_ENTITY_C&nbsp;optional<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_NAVIGATION_PATH&nbsp;type&nbsp;/IWBEP/T_MGW_NAVIGATION_PATH<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IO_DATA_PROVIDER&nbsp;type&nbsp;ref&nbsp;to&nbsp;/IWBEP/IF_MGW_ENTRY_PROVIDER&nbsp;optional<br />
+&nbsp;&nbsp;&nbsp;&nbsp;exporting<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ER_ENTITY&nbsp;type&nbsp;ZCL_ZEA_SD090_MPC=&gt;TS_PRICE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;raising<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_BUSI_EXCEPTION<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_TECH_EXCEPTION&nbsp;.<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="protected_methods/priceset_delete_entity.html">PRICESET_DELETE_ENTITY</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;importing<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_SET_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_SOURCE_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_KEY_TAB&nbsp;type&nbsp;/IWBEP/T_MGW_NAME_VALUE_PAIR<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IO_TECH_REQUEST_CONTEXT&nbsp;type&nbsp;ref&nbsp;to&nbsp;/IWBEP/IF_MGW_REQ_ENTITY_D&nbsp;optional<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_NAVIGATION_PATH&nbsp;type&nbsp;/IWBEP/T_MGW_NAVIGATION_PATH<br />
+&nbsp;&nbsp;&nbsp;&nbsp;raising<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_BUSI_EXCEPTION<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_TECH_EXCEPTION&nbsp;.<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="protected_methods/priceset_get_entity.html">PRICESET_GET_ENTITY</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;importing<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_SET_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_SOURCE_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_KEY_TAB&nbsp;type&nbsp;/IWBEP/T_MGW_NAME_VALUE_PAIR<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IO_REQUEST_OBJECT&nbsp;type&nbsp;ref&nbsp;to&nbsp;/IWBEP/IF_MGW_REQ_ENTITY&nbsp;optional<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IO_TECH_REQUEST_CONTEXT&nbsp;type&nbsp;ref&nbsp;to&nbsp;/IWBEP/IF_MGW_REQ_ENTITY&nbsp;optional<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_NAVIGATION_PATH&nbsp;type&nbsp;/IWBEP/T_MGW_NAVIGATION_PATH<br />
+&nbsp;&nbsp;&nbsp;&nbsp;exporting<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ER_ENTITY&nbsp;type&nbsp;ZCL_ZEA_SD090_MPC=&gt;TS_PRICE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ES_RESPONSE_CONTEXT&nbsp;type&nbsp;/IWBEP/IF_MGW_APPL_SRV_RUNTIME=&gt;TY_S_MGW_RESPONSE_ENTITY_CNTXT<br />
+&nbsp;&nbsp;&nbsp;&nbsp;raising<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_BUSI_EXCEPTION<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_TECH_EXCEPTION&nbsp;.<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="protected_methods/priceset_get_entityset.html">PRICESET_GET_ENTITYSET</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;importing<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_SET_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_SOURCE_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_FILTER_SELECT_OPTIONS&nbsp;type&nbsp;/IWBEP/T_MGW_SELECT_OPTION<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS_PAGING&nbsp;type&nbsp;/IWBEP/S_MGW_PAGING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_KEY_TAB&nbsp;type&nbsp;/IWBEP/T_MGW_NAME_VALUE_PAIR<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_NAVIGATION_PATH&nbsp;type&nbsp;/IWBEP/T_MGW_NAVIGATION_PATH<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_ORDER&nbsp;type&nbsp;/IWBEP/T_MGW_SORTING_ORDER<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_FILTER_STRING&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_SEARCH_STRING&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IO_TECH_REQUEST_CONTEXT&nbsp;type&nbsp;ref&nbsp;to&nbsp;/IWBEP/IF_MGW_REQ_ENTITYSET&nbsp;optional<br />
+&nbsp;&nbsp;&nbsp;&nbsp;exporting<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ET_ENTITYSET&nbsp;type&nbsp;ZCL_ZEA_SD090_MPC=&gt;TT_PRICE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ES_RESPONSE_CONTEXT&nbsp;type&nbsp;/IWBEP/IF_MGW_APPL_SRV_RUNTIME=&gt;TY_S_MGW_RESPONSE_CONTEXT<br />
+&nbsp;&nbsp;&nbsp;&nbsp;raising<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_BUSI_EXCEPTION<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_TECH_EXCEPTION&nbsp;.<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="protected_methods/priceset_update_entity.html">PRICESET_UPDATE_ENTITY</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;importing<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_ENTITY_SET_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_SOURCE_NAME&nbsp;type&nbsp;STRING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_KEY_TAB&nbsp;type&nbsp;/IWBEP/T_MGW_NAME_VALUE_PAIR<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IO_TECH_REQUEST_CONTEXT&nbsp;type&nbsp;ref&nbsp;to&nbsp;/IWBEP/IF_MGW_REQ_ENTITY_U&nbsp;optional<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_NAVIGATION_PATH&nbsp;type&nbsp;/IWBEP/T_MGW_NAVIGATION_PATH<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IO_DATA_PROVIDER&nbsp;type&nbsp;ref&nbsp;to&nbsp;/IWBEP/IF_MGW_ENTRY_PROVIDER&nbsp;optional<br />
+&nbsp;&nbsp;&nbsp;&nbsp;exporting<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ER_ENTITY&nbsp;type&nbsp;ZCL_ZEA_SD090_MPC=&gt;TS_PRICE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;raising<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_BUSI_EXCEPTION<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/IWBEP/CX_MGW_TECH_EXCEPTION&nbsp;.<br />
+<br />
+&nbsp;&nbsp;methods&nbsp;<a&nbsp;href="protected_methods/check_subscription_authority.html">CHECK_SUBSCRIPTION_AUTHORITY</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;redefinition&nbsp;.<br />
+<br />
+   </div>
+   <div class="codeComment">
+**************************************************************************<br />
+*   Types section of class.                                              *<br />
+**************************************************************************<br />
+*"* dummy include to reduce generation dependencies between<br />
+*"* class ZCL_ZEA_SD090_DPC and it's users.<br />
+*"* touched if any type reference has been changed<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.5.0 - E.G.Mellodew. 1998-2024. Sap Release 754</td>
+   </tr>
+</table>
+</body>
+</html>

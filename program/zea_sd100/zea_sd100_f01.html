@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ZEA_SD100_F01</title>
+<style type="text/css">
+.code{ font-family:"Courier New", Courier, monospace; color:#000; font-size:14px; background-color:#F2F4F7 }
+  .codeComment {font-family:"Courier New", Courier, monospace; color:#0000F0; font-size:14px; background-color:#F2F4F7 }
+  .normalBold{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:800 }
+  .normalBoldLarge{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for: ZEA_SD100_F01</h2>
+<h3> Description: Include ZEA_TR_TEM_F01</h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Include&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZEA_TR_TEM_F01<br />
+*&---------------------------------------------------------------------*<br />
+<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;get_data<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM GET_DATA .<br />
+<br />
+&nbsp;&nbsp;CHECK&nbsp;SY-UNAME&nbsp;EQ&nbsp;'ACA5-03'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;SY-UNAME&nbsp;EQ&nbsp;'ACA5-08'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;SY-UNAME&nbsp;EQ&nbsp;'ACA5-12'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;SY-UNAME&nbsp;EQ&nbsp;'ACA5-15'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;SY-UNAME&nbsp;EQ&nbsp;'ACA5-17'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;SY-UNAME&nbsp;EQ&nbsp;'ACA5-23'.<br />
+<br />
+&nbsp;&nbsp;CLEAR&nbsp;&nbsp;&nbsp;GS_DATA.<br />
+&nbsp;&nbsp;REFRESH&nbsp;GT_DATA.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;SELECT&nbsp;*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;INTO&nbsp;CORRESPONDING&nbsp;FIELDS&nbsp;OF&nbsp;TABLE&nbsp;GT_DATA<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;ZEA_SDT030&nbsp;AS&nbsp;A<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;LEFT&nbsp;JOIN&nbsp;ZEA_T001W&nbsp;AS&nbsp;B&nbsp;ON&nbsp;A~WERKS&nbsp;EQ&nbsp;B~WERKS<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;LEFT&nbsp;JOIN&nbsp;ZEA_MMT020&nbsp;AS&nbsp;C&nbsp;ON&nbsp;A~MATNR&nbsp;EQ&nbsp;C~MATNR<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;C~SPRAS&nbsp;EQ&nbsp;SY-LANGU.<br />
+<br />
+<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;SELECT&nbsp;*<br />
+&nbsp;&nbsp;&nbsp;&nbsp;INTO&nbsp;CORRESPONDING&nbsp;FIELDS&nbsp;OF&nbsp;TABLE&nbsp;GT_DATA<br />
+&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;ZEA_SDT030&nbsp;AS&nbsp;A<br />
+&nbsp;&nbsp;&nbsp;&nbsp;LEFT&nbsp;JOIN&nbsp;ZEA_SDT020&nbsp;AS&nbsp;B&nbsp;ON&nbsp;A~SAPNR&nbsp;EQ&nbsp;B~SAPNR<br />
+&nbsp;&nbsp;&nbsp;&nbsp;LEFT&nbsp;JOIN&nbsp;ZEA_T001W&nbsp;AS&nbsp;C&nbsp;ON&nbsp;A~WERKS&nbsp;EQ&nbsp;C~WERKS<br />
+&nbsp;&nbsp;&nbsp;&nbsp;LEFT&nbsp;JOIN&nbsp;ZEA_MMT020&nbsp;AS&nbsp;D&nbsp;ON&nbsp;A~MATNR&nbsp;EQ&nbsp;D~MATNR<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;D~SPRAS&nbsp;EQ&nbsp;SY-LANGU.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;SELECT&nbsp;*<br />
+*INTO&nbsp;CORRESPONDING&nbsp;FIELDS&nbsp;OF&nbsp;TABLE&nbsp;GT_DATA<br />
+*FROM&nbsp;ZEA_SDT030&nbsp;AS&nbsp;A<br />
+*LEFT&nbsp;JOIN&nbsp;ZEA_T001W&nbsp;AS&nbsp;B&nbsp;ON&nbsp;A~WERKS&nbsp;EQ&nbsp;B~WERKS<br />
+*LEFT&nbsp;JOIN&nbsp;ZEA_MMT020&nbsp;AS&nbsp;C&nbsp;ON&nbsp;A~MATNR&nbsp;EQ&nbsp;C~MATNR<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;C~SPRAS&nbsp;EQ&nbsp;SY-LANGU.<br />
+<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;IF&nbsp;SY-SUBRC&nbsp;NE&nbsp;0.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;MESSAGE&nbsp;S000&nbsp;WITH&nbsp;'Data&nbsp;not&nbsp;found'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;LEAVE&nbsp;LIST-PROCESSING.<br />
+&nbsp;&nbsp;ENDIF.<br />
+<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;set_fcat<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM SET_TREE_FCAT .<br />
+<br />
+&nbsp;&nbsp;GS_LAYOUT-ZEBRA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;GS_LAYOUT-CWIDTH_OPT&nbsp;=&nbsp;'A'.<br />
+&nbsp;&nbsp;GS_LAYOUT-SEL_MODE&nbsp;&nbsp;&nbsp;=&nbsp;'D'.<br />
+<br />
+&nbsp;&nbsp;PERFORM&nbsp;SET_FCAT&nbsp;USING&nbsp;:<br />
+<br />
+&nbsp;&nbsp;'SAPNR'&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SAPNR',<br />
+&nbsp;&nbsp;'SP_YEAR'&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SP_YEAR',<br />
+&nbsp;&nbsp;'WERKS'&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'WERKS',<br />
+&nbsp;&nbsp;'PNAME1'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_T001W'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'PNAME1',<br />
+&nbsp;&nbsp;'MATNR'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;'MATNR',<br />
+&nbsp;&nbsp;'MAKTX'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_MMT020'&nbsp;&nbsp;&nbsp;'MAKTX',<br />
+&nbsp;&nbsp;'SAPQU'&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SAPQU',<br />
+&nbsp;&nbsp;'MEINS'&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'MEINS',<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;'TOTREV'&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT020'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'TOTREV',<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;'NETPR'&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'NETPR',<br />
+&nbsp;&nbsp;'WAERS'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'WAERS',<br />
+&nbsp;&nbsp;'SPQTY1'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY1',<br />
+&nbsp;&nbsp;'SPQTY2'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY2',<br />
+&nbsp;&nbsp;'SPQTY3'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY3',<br />
+&nbsp;&nbsp;'SPQTY4'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY4',<br />
+&nbsp;&nbsp;'SPQTY5'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY5',<br />
+&nbsp;&nbsp;'SPQTY6'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY6',<br />
+&nbsp;&nbsp;'SPQTY7'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY7',<br />
+&nbsp;&nbsp;'SPQTY8'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY8',<br />
+&nbsp;&nbsp;'SPQTY9'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY9',<br />
+&nbsp;&nbsp;'SPQTY10'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY10',<br />
+&nbsp;&nbsp;'SPQTY11'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY11',<br />
+&nbsp;&nbsp;'SPQTY12'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;&nbsp;'ZEA_SDT030'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'SPQTY12'.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;WERKS&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT030-WERKS,<br />
+*&nbsp;&nbsp;PNAME1&nbsp;&nbsp;TYPE&nbsp;ZEA_T001W-PNAME1,&nbsp;"&nbsp;플랜트명&nbsp;새로&nbsp;추가.<br />
+*&nbsp;&nbsp;MATNR&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT030-MATNR,<br />
+*&nbsp;&nbsp;SAPQU&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT030-SAPQU,<br />
+*&nbsp;&nbsp;MEINS&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT030-MEINS,<br />
+*&nbsp;&nbsp;NETPR&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT030-NETPR,<br />
+*&nbsp;&nbsp;WAERS&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT030-WAERS,<br />
+*&nbsp;&nbsp;SPQTY1&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT030-SPQTY1,<br />
+<br />
+<br />
+   </div>
+   <div class="code">
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;set_fcat<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;&nbsp;P_<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;&nbsp;P_<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;&nbsp;P_<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;&nbsp;P_<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM SET_FCAT USING PV_FIELD PV_TEXT PV_REF_TABLE PV_REF_FIELD.<br />
+<br />
+&nbsp;&nbsp;GS_FCAT-FIELDNAME&nbsp;=&nbsp;PV_FIELD.<br />
+&nbsp;&nbsp;GS_FCAT-COLTEXT&nbsp;&nbsp;&nbsp;=&nbsp;PV_TEXT.<br />
+&nbsp;&nbsp;GS_FCAT-REF_TABLE&nbsp;=&nbsp;PV_REF_TABLE.<br />
+&nbsp;&nbsp;GS_FCAT-REF_FIELD&nbsp;=&nbsp;PV_REF_FIELD.<br />
+<br />
+&nbsp;&nbsp;CASE&nbsp;PV_FIELD.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'SAPQU'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FCAT-QFIELDNAME&nbsp;=&nbsp;'MEINS'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FCAT-DO_SUM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'SP_YEAR'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FCAT-NO_OUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'NETPR'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FCAT-CFIELDNAME&nbsp;=&nbsp;'WAERS'.<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FCAT-DO_SUM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'PNAME1'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FCAT-NO_OUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'MAKTX'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FCAT-NO_OUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+<br />
+&nbsp;&nbsp;ENDCASE.<br />
+<br />
+&nbsp;&nbsp;APPEND&nbsp;GS_FCAT&nbsp;TO&nbsp;GT_FCAT.<br />
+&nbsp;&nbsp;CLEAR&nbsp;&nbsp;GS_FCAT.<br />
+<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;create_object<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM CREATE_OBJECT .<br />
+<br />
+&nbsp;&nbsp;CREATE&nbsp;OBJECT&nbsp;GCL_CONTAINER<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SIDE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GCL_CONTAINER-&gt;DOCK_AT_LEFT<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXTENSION&nbsp;=&nbsp;3000.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;CREATE&nbsp;OBJECT&nbsp;gcl_tree<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;gcl_container<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_selection_mode&nbsp;=&nbsp;cl_gui_column_tree=&gt;node_sel_mode_multiple<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item_selection&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no_html_header&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no_toolbar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;space.<br />
+<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;CREATE&nbsp;OBJECT&nbsp;GCL_TREE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_PARENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GCL_CONTAINER<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_NODE_SELECTION_MODE&nbsp;=&nbsp;CL_GUI_COLUMN_TREE=&gt;NODE_SEL_MODE_MULTIPLE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_ITEM_SELECTION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_NO_HTML_HEADER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_NO_TOOLBAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;SPACE.<br />
+<br />
+&nbsp;&nbsp;GS_VARIANT-REPORT&nbsp;=&nbsp;SY-REPID.<br />
+<br />
+&nbsp;&nbsp;CALL&nbsp;METHOD&nbsp;GCL_TREE-&gt;SET_TABLE_FOR_FIRST_DISPLAY<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_SAVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'A'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS_LAYOUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_LAYOUT<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS_VARIANT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_VARIANT<br />
+&nbsp;&nbsp;&nbsp;&nbsp;CHANGING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_OUTTAB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GT_DATA<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_SORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GT_SORT<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_FIELDCATALOG&nbsp;=&nbsp;GT_FCAT.<br />
+<br />
+&nbsp;&nbsp;CALL&nbsp;METHOD&nbsp;GCL_TREE-&gt;EXPAND_TREE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_LEVEL&nbsp;=&nbsp;1.<br />
+<br />
+&nbsp;&nbsp;CALL&nbsp;METHOD&nbsp;GCL_TREE-&gt;COLUMN_OPTIMIZE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_START_COLUMN&nbsp;=&nbsp;GCL_TREE-&gt;C_HIERARCHY_COLUMN_NAME<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_END_COLUMN&nbsp;&nbsp;&nbsp;=&nbsp;GCL_TREE-&gt;C_HIERARCHY_COLUMN_NAME.<br />
+<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;set_sort<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM SET_SORT .<br />
+<br />
+&nbsp;&nbsp;GS_SORT-SPOS&nbsp;=&nbsp;1.<br />
+&nbsp;&nbsp;GS_SORT-FIELDNAME&nbsp;=&nbsp;'SP_YEAR'.<br />
+&nbsp;&nbsp;GS_SORT-UP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;GS_SORT-SUBTOT&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;APPEND&nbsp;GS_SORT&nbsp;TO&nbsp;GT_SORT.<br />
+<br />
+&nbsp;&nbsp;CLEAR&nbsp;&nbsp;GS_SORT.<br />
+&nbsp;&nbsp;GS_SORT-SPOS&nbsp;=&nbsp;2.<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;GS_SORT-FIELDNAME&nbsp;=&nbsp;'WERKS'.<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;GS_SORT-FIELDNAME&nbsp;=&nbsp;'PNAME1'.<br />
+&nbsp;&nbsp;GS_SORT-UP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;GS_SORT-SUBTOT&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;APPEND&nbsp;GS_SORT&nbsp;TO&nbsp;GT_SORT.<br />
+<br />
+&nbsp;&nbsp;CLEAR&nbsp;&nbsp;GS_SORT.<br />
+&nbsp;&nbsp;GS_SORT-SPOS&nbsp;=&nbsp;3.<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;GS_SORT-FIELDNAME&nbsp;=&nbsp;'MATNR'.<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;GS_SORT-FIELDNAME&nbsp;=&nbsp;'MAKTX'.<br />
+&nbsp;&nbsp;GS_SORT-UP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;APPEND&nbsp;GS_SORT&nbsp;TO&nbsp;GT_SORT.<br />
+<br />
+&nbsp;&nbsp;CLEAR&nbsp;&nbsp;GS_SORT.<br />
+&nbsp;&nbsp;GS_SORT-FIELDNAME&nbsp;=&nbsp;'SPQTY1'.<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;GS_SORT-UP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;GS_SORT-SUBTOT&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+<br />
+ENDFORM.<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.5.0 - E.G.Mellodew. 1998-2024. Sap Release 754</td>
+   </tr>
+</table>
+</body>
+</html>

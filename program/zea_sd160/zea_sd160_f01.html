@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ZEA_SD160_F01</title>
+<style type="text/css">
+.code{ font-family:"Courier New", Courier, monospace; color:#000; font-size:14px; background-color:#F2F4F7 }
+  .codeComment {font-family:"Courier New", Courier, monospace; color:#0000F0; font-size:14px; background-color:#F2F4F7 }
+  .normalBold{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:800 }
+  .normalBoldLarge{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for: ZEA_SD160_F01</h2>
+<h3> Description: Include ZEA_SD160_F01</h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Include&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZEA_SD160_F01<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM SELECT_DATA .<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;SELECT&nbsp;*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;ZEA_KNA1<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;INTO&nbsp;CORRESPONDING&nbsp;FIELDS&nbsp;OF&nbsp;TABLE&nbsp;GT_DATA<br />
+*&nbsp;&nbsp;&nbsp;WHERE&nbsp;CUSCODE&nbsp;EQ&nbsp;PA_CUS.<br />
+<br />
+***&nbsp;고객정보,&nbsp;여신정보&nbsp;가져와서&nbsp;보여주기<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;SELECT&nbsp;SINGLE&nbsp;*<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;ZEA_KNA1&nbsp;AS&nbsp;A<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LEFT&nbsp;JOIN&nbsp;ZEA_KNKK&nbsp;AS&nbsp;B&nbsp;ON&nbsp;A~CUSCODE&nbsp;EQ&nbsp;B~CUSCODE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INTO&nbsp;CORRESPONDING&nbsp;FIELDS&nbsp;OF&nbsp;GS_DATA<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;A~CUSCODE&nbsp;EQ&nbsp;PA_CUS.<br />
+<br />
+&nbsp;&nbsp;CLEAR&nbsp;ZEA_KNA1.<br />
+&nbsp;&nbsp;ZEA_KNA1-CUSCODE&nbsp;&nbsp;=&nbsp;PA_CUS.<br />
+&nbsp;&nbsp;ZEA_KNA1-SAKNR&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-SAKNR.<br />
+&nbsp;&nbsp;ZEA_KNA1-BPCUS&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-BPCUS.<br />
+&nbsp;&nbsp;ZEA_KNA1-BPCSNR&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-BPCSNR.<br />
+&nbsp;&nbsp;ZEA_KNA1-BPHAED&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-BPHAED.<br />
+&nbsp;&nbsp;ZEA_KNA1-BPSTAT&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-BPSTAT.<br />
+&nbsp;&nbsp;ZEA_KNA1-ZLSCH&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-ZLSCH.<br />
+&nbsp;&nbsp;ZEA_KNA1-LAND1&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-LAND1.<br />
+&nbsp;&nbsp;ZEA_KNA1-BPADRR&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-BPADRR.<br />
+<br />
+&nbsp;&nbsp;CLEAR&nbsp;ZEA_KNKK.<br />
+&nbsp;&nbsp;ZEA_KNKK-KLIMK&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-KLIMK.<br />
+&nbsp;&nbsp;ZEA_KNKK-WAERS&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-WAERS.<br />
+&nbsp;&nbsp;ZEA_KNKK-STATUS_K&nbsp;&nbsp;&nbsp;=&nbsp;GS_DATA-STATUS_K.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;&nbsp;&nbsp;GET&nbsp;PARAMETER&nbsp;ID&nbsp;'ZEA_KNKK'&nbsp;FIELD&nbsp;ZEA_SDT040-CUSCODE.<br />
+<br />
+***&nbsp;A/R&nbsp;정보&nbsp;가져와서&nbsp;계산하기<br />
+*-&nbsp;승인된&nbsp;판매오더중&nbsp;STATUS4에&nbsp;'X'&nbsp;값이&nbsp;입력되지&nbsp;않은&nbsp;건(수금완료되지&nbsp;않은&nbsp;건들)&nbsp;만&nbsp;조회하여&nbsp;총&nbsp;구매금액(TOAMT)&nbsp;을&nbsp;합산한다.<br />
+*-&nbsp;합산된&nbsp;금액을&nbsp;고객여신&nbsp;테이블(ZEA_KNKK)에서&nbsp;여신&nbsp;한도(KLIMK)필드에서&nbsp;차액을&nbsp;구하고&nbsp;여신&nbsp;잔액으로&nbsp;입력한다.<br />
+*-&nbsp;잔액의&nbsp;비율에&nbsp;따라&nbsp;LED로&nbsp;표시한다.(잔액이&nbsp;30%부터&nbsp;노란색&nbsp;LED,&nbsp;5%부터&nbsp;빨간색&nbsp;LED&nbsp;표시)<br />
+*-&nbsp;SCR에서&nbsp;고객을&nbsp;검색하고&nbsp;검색된&nbsp;고객의&nbsp;데이터(ZEA_KNA1)와&nbsp;함께&nbsp;여신데이터(ZEA_KNKK)를&nbsp;보여준다.<br />
+<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;DATA:&nbsp;LS_ODAMT&nbsp;TYPE&nbsp;ZEA_SDT040-TOAMT,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LT_ODAMT&nbsp;LIKE&nbsp;TABLE&nbsp;OF&nbsp;LS_ODAMT.<br />
+<br />
+<br />
+&nbsp;&nbsp;SELECT&nbsp;TOAMT<br />
+&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;ZEA_SDT040<br />
+&nbsp;&nbsp;&nbsp;&nbsp;INTO&nbsp;TABLE&nbsp;LT_ODAMT<br />
+&nbsp;&nbsp;&nbsp;WHERE&nbsp;STATUS4&nbsp;NE&nbsp;'X'.<br />
+<br />
+&nbsp;&nbsp;LOOP&nbsp;AT&nbsp;LT_ODAMT&nbsp;INTO&nbsp;LS_ODAMT.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;GV_ODAMT&nbsp;=&nbsp;GV_ODAMT&nbsp;+&nbsp;LS_ODAMT.<br />
+&nbsp;&nbsp;ENDLOOP.<br />
+<br />
+<br />
+&nbsp;&nbsp;AR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GV_ODAMT.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;A/R&nbsp;잔액<br />
+&nbsp;&nbsp;KLIMK_EXTRA&nbsp;=&nbsp;ZEA_KNKK-KLIMK&nbsp;-&nbsp;AR.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;여신&nbsp;잔액<br />
+<br />
+&nbsp;&nbsp;IF&nbsp;KLIMK_EXTRA&nbsp;&gt;&nbsp;0.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KLIMK_PERC&nbsp;&nbsp;=&nbsp;(&nbsp;KLIMK_EXTRA&nbsp;/&nbsp;ZEA_KNKK-KLIMK&nbsp;)&nbsp;*&nbsp;100.&nbsp;"&nbsp;잔액&nbsp;비율<br />
+&nbsp;&nbsp;ELSE.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;KLIMK_PERC&nbsp;=&nbsp;0.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;KLIMK_EXTRA&nbsp;=&nbsp;0.<br />
+&nbsp;&nbsp;ENDIF.<br />
+<br />
+<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;IF&nbsp;KLIMK_PERC&nbsp;LT&nbsp;30.&nbsp;"&nbsp;여신현황(ZEA_KNKK-STATUS_K)<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;ZEA_KNKK-STATUS_K&nbsp;=&nbsp;'Y'.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;ICON&nbsp;=&nbsp;ICON_YELLOW_LIGHT.<br />
+*&nbsp;&nbsp;ELSEIF&nbsp;KLIMK_PERC&nbsp;LT&nbsp;5.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;ZEA_KNKK-STATUS_K&nbsp;=&nbsp;'R'.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;ICON&nbsp;=&nbsp;ICON_RED_LIGHT.<br />
+*&nbsp;&nbsp;ELSE.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;ZEA_KNKK-STATUS_K&nbsp;=&nbsp;'G'.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;ICON&nbsp;=&nbsp;ICON_GREEN_LIGHT.<br />
+*&nbsp;&nbsp;ENDIF.<br />
+<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;IF&nbsp;KLIMK_PERC&nbsp;LT&nbsp;5.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ZEA_KNKK-STATUS_K&nbsp;=&nbsp;'R'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ICON&nbsp;=&nbsp;ICON_RED_LIGHT.<br />
+&nbsp;&nbsp;ELSEIF&nbsp;KLIMK_PERC&nbsp;LT&nbsp;30.&nbsp;"&nbsp;여신현황(ZEA_KNKK-STATUS_K)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ZEA_KNKK-STATUS_K&nbsp;=&nbsp;'Y'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ICON&nbsp;=&nbsp;ICON_YELLOW_LIGHT.<br />
+&nbsp;&nbsp;ELSE.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ZEA_KNKK-STATUS_K&nbsp;=&nbsp;'G'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ICON&nbsp;=&nbsp;ICON_GREEN_LIGHT.<br />
+&nbsp;&nbsp;ENDIF.<br />
+<br />
+<br />
+   </div>
+   <div class="codeComment">
+***&nbsp;고객&nbsp;A/R&nbsp;현황&nbsp;ALV&nbsp;에&nbsp;데이터&nbsp;전달<br />
+<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;SELECT&nbsp;*<br />
+&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;ZEA_SDT040<br />
+&nbsp;&nbsp;&nbsp;&nbsp;INTO&nbsp;CORRESPONDING&nbsp;FIELDS&nbsp;OF&nbsp;TABLE&nbsp;GT_DATA2<br />
+&nbsp;&nbsp;&nbsp;WHERE&nbsp;STATUS4&nbsp;NE&nbsp;'X'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;LOEKZ&nbsp;NE&nbsp;'X'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;CUSCODE&nbsp;EQ&nbsp;PA_CUS.<br />
+<br />
+<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;DISPLAY_DATA<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM DISPLAY_DATA .<br />
+<br />
+   </div>
+   <div class="codeComment">
+***&nbsp;고객&nbsp;A/R&nbsp;현황&nbsp;ALV&nbsp;에&nbsp;데이터&nbsp;전달<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;LOOP&nbsp;AT&nbsp;GT_DATA2&nbsp;INTO&nbsp;GS_DATA2.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;CLEAR&nbsp;GS_DISPLAY2.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;MOVE-CORRESPONDING&nbsp;GS_DATA2&nbsp;TO&nbsp;GS_DISPLAY2.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;APPEND&nbsp;GS_DISPLAY2&nbsp;TO&nbsp;GT_DISPLAY2.<br />
+&nbsp;&nbsp;ENDLOOP.<br />
+<br />
+<br />
+<br />
+&nbsp;&nbsp;CALL&nbsp;SCREEN&nbsp;0100.<br />
+<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;CREATE_OBJECT_0110<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM CREATE_OBJECT_0110 .<br />
+<br />
+&nbsp;&nbsp;CREATE&nbsp;OBJECT&nbsp;GO_CONTAINER<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTAINER_NAME&nbsp;=&nbsp;'CCON'&nbsp;"&nbsp;Name&nbsp;of&nbsp;the&nbsp;Screen&nbsp;CustCtrl&nbsp;Name&nbsp;to&nbsp;Link&nbsp;Container&nbsp;To<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXCEPTIONS<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OTHERS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;1.<br />
+<br />
+&nbsp;&nbsp;IF&nbsp;SY-SUBRC&nbsp;NE&nbsp;0.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;MESSAGE&nbsp;'컨테이너&nbsp;생성에&nbsp;실패했습니다.'&nbsp;TYPE&nbsp;'E'.<br />
+&nbsp;&nbsp;ENDIF.<br />
+<br />
+<br />
+&nbsp;&nbsp;CREATE&nbsp;OBJECT&nbsp;GO_ALV_GRID<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_PARENT&nbsp;=&nbsp;GO_CONTAINER.&nbsp;&nbsp;&nbsp;"&nbsp;Parent&nbsp;Container<br />
+<br />
+&nbsp;&nbsp;IF&nbsp;SY-SUBRC&nbsp;&lt;&gt;&nbsp;0.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;MESSAGE&nbsp;'ALV&nbsp;생성에&nbsp;실패했습니다.'&nbsp;TYPE&nbsp;'E'.<br />
+&nbsp;&nbsp;ENDIF.<br />
+<br />
+<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;DISPLAY_ALV_0110<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM DISPLAY_ALV_0110 .<br />
+<br />
+&nbsp;&nbsp;CALL&nbsp;METHOD&nbsp;GO_ALV_GRID-&gt;SET_TABLE_FOR_FIRST_DISPLAY<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_STRUCTURE_NAME&nbsp;=&nbsp;'ZEA_SDT010'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;Internal&nbsp;Output&nbsp;Table&nbsp;Structure&nbsp;Name<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS_VARIANT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_VARIANT&nbsp;&nbsp;"&nbsp;Layout<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I_SAVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GV_SAVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;Save&nbsp;Layout<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS_LAYOUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GS_LAYOUT&nbsp;&nbsp;&nbsp;"&nbsp;Layout<br />
+&nbsp;&nbsp;&nbsp;&nbsp;CHANGING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_OUTTAB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;GT_DISPLAY2&nbsp;"&nbsp;Output&nbsp;Table<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_FIELDCATALOG&nbsp;=&nbsp;GT_FIELDCAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;Field&nbsp;Catalog<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXCEPTIONS<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OTHERS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;1.<br />
+<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;SET_ALV_FIELDCAT_0110<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM SET_ALV_FIELDCAT_0110 .<br />
+<br />
+&nbsp;&nbsp;PERFORM&nbsp;GET_FIELDCAT&nbsp;&nbsp;&nbsp;&nbsp;USING&nbsp;&nbsp;&nbsp;&nbsp;GT_DISPLAY2<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CHANGING&nbsp;GT_FIELDCAT.<br />
+&nbsp;&nbsp;PERFORM&nbsp;MAKE_FIELDCAT_0110.<br />
+<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;GET_FIELDCAT<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;text<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;&nbsp;GT_DISPLAY2<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;GT_FIELDCAT<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM GET_FIELDCAT   USING    PT_TAB  TYPE STANDARD TABLE<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CHANGING&nbsp;PT_FCAT&nbsp;TYPE&nbsp;LVC_T_FCAT.<br />
+<br />
+&nbsp;&nbsp;DATA:&nbsp;LO_DREF&nbsp;TYPE&nbsp;REF&nbsp;TO&nbsp;DATA.<br />
+<br />
+&nbsp;&nbsp;CREATE&nbsp;DATA&nbsp;LO_DREF&nbsp;LIKE&nbsp;PT_TAB.<br />
+&nbsp;&nbsp;FIELD-SYMBOLS&nbsp;&lt;LT_TAB&gt;&nbsp;TYPE&nbsp;TABLE.<br />
+&nbsp;&nbsp;ASSIGN&nbsp;LO_DREF-&gt;*&nbsp;TO&nbsp;&lt;LT_TAB&gt;.<br />
+<br />
+&nbsp;&nbsp;TRY.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CALL&nbsp;METHOD&nbsp;CL_SALV_TABLE=&gt;FACTORY<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R_SALV_TABLE&nbsp;=&nbsp;DATA(LR_TABLE)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CHANGING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T_TABLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&lt;LT_TAB&gt;.<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;CATCH&nbsp;CX_SALV_MSG.&nbsp;"&nbsp;ALV:&nbsp;General&nbsp;Error&nbsp;Class&nbsp;with&nbsp;Message<br />
+&nbsp;&nbsp;ENDTRY.<br />
+<br />
+&nbsp;&nbsp;PT_FCAT&nbsp;=&nbsp;CL_SALV_CONTROLLER_METADATA=&gt;GET_LVC_FIELDCATALOG(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R_COLUMNS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;LR_TABLE-&gt;GET_COLUMNS(&nbsp;)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R_AGGREGATIONS&nbsp;=&nbsp;LR_TABLE-&gt;GET_AGGREGATIONS(&nbsp;)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;MAKE_FIELDCAT_0110<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM MAKE_FIELDCAT_0110 .<br />
+<br />
+&nbsp;&nbsp;LOOP&nbsp;AT&nbsp;GT_FIELDCAT&nbsp;INTO&nbsp;GS_FIELDCAT.<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;CASE&nbsp;GS_FIELDCAT-FIELDNAME.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'VBELN'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FIELDCAT-KEY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;ABAP_ON.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'TOAMT'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FIELDCAT-EMPHASIZE&nbsp;&nbsp;=&nbsp;'C311'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FIELDCAT-CFIELDNAME&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'WAERS'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'SADDR'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FIELDCAT-OUTPUTLEN&nbsp;=&nbsp;25.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'STATUS4'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FIELDCAT-NO_OUT&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHEN&nbsp;'LOEKZ'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_FIELDCAT-NO_OUT&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;ENDCASE.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;MODIFY&nbsp;GT_FIELDCAT&nbsp;FROM&nbsp;GS_FIELDCAT.<br />
+&nbsp;&nbsp;ENDLOOP.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*VBELN&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT040-VBELN,<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SADDR&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT040-SADDR,<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VDATU&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT040-VDATU,<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ODDAT&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT040-ODDAT,<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TOAMT&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT040-TOAMT,<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WAERS&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT040-WAERS,<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STATUS4&nbsp;TYPE&nbsp;ZEA_SDT040-STATUS4,<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOEKZ&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_SDT040-LOEKZ,<br />
+<br />
+<br />
+   </div>
+   <div class="code">
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;SET_ALV_LAYOUT_0110<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM SET_ALV_LAYOUT_0110 .<br />
+<br />
+&nbsp;&nbsp;CLEAR&nbsp;GS_LAYOUT.<br />
+&nbsp;&nbsp;CLEAR&nbsp;GS_VARIANT.<br />
+&nbsp;&nbsp;CLEAR&nbsp;GV_SAVE.<br />
+<br />
+&nbsp;&nbsp;GS_VARIANT-REPORT&nbsp;=&nbsp;SY-REPID.<br />
+&nbsp;&nbsp;GV_SAVE&nbsp;=&nbsp;'A'.&nbsp;&nbsp;&nbsp;"&nbsp;''&nbsp;:&nbsp;Layout&nbsp;저장불가<br />
+&nbsp;&nbsp;"&nbsp;'U'&nbsp;:&nbsp;저장한&nbsp;사용자만&nbsp;사용가능<br />
+&nbsp;&nbsp;"&nbsp;'X'&nbsp;:&nbsp;Layout을&nbsp;저장하면&nbsp;모든&nbsp;사용자가&nbsp;사용&nbsp;가능<br />
+&nbsp;&nbsp;"&nbsp;'A'&nbsp;:&nbsp;Layout을&nbsp;저장할&nbsp;때&nbsp;'U'/'X'&nbsp;선택&nbsp;가능<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;GS_LAYOUT-CWIDTH_OPT&nbsp;=&nbsp;ABAP_ON.<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;GS_LAYOUT-ZEBRA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;ABAP_ON.<br />
+&nbsp;&nbsp;GS_LAYOUT-SEL_MODE&nbsp;&nbsp;&nbsp;=&nbsp;'D'.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;GS_LAYOUT-GRID_TITLE&nbsp;=&nbsp;TEXT-T10.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;ALV&nbsp;TITLE&nbsp;TEXT<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;GS_LAYOUT-INFO_FNAME&nbsp;=&nbsp;'COLOR'.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;행&nbsp;색상<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;GS_LAYOUT-EXCP_FNAME&nbsp;=&nbsp;'LIGHT'.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;신호등<br />
+*&nbsp;&nbsp;GS_LAYOUT-EXCP_LED&nbsp;=&nbsp;ABAP_ON.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;신호등&nbsp;모양&nbsp;변경<br />
+*&nbsp;&nbsp;GS_LAYOUT-CTAB_FNAME&nbsp;=&nbsp;'IT_FIELD_COLORS'.&nbsp;"&nbsp;셀&nbsp;별&nbsp;색상<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;GS_LAYOUT-STYLEFNAME&nbsp;&nbsp;=&nbsp;'STYLE'.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;스타일<br />
+<br />
+ENDFORM.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Form&nbsp;MODIFY_DATA<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM MODIFY_DATA .<br />
+<br />
+&nbsp;&nbsp;DATA:&nbsp;LS_KNKK&nbsp;TYPE&nbsp;ZEA_KNKK.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;LOOP&nbsp;AT&nbsp;GT_DATA&nbsp;INTO&nbsp;GS_DATA.<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;GS_DATA-STATUS_K&nbsp;=&nbsp;ZEA_KNKK-STATUS_K.<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;&nbsp;&nbsp;MODIFY&nbsp;GS_DATA.<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;&nbsp;&nbsp;MOVE-CORRESPONDING&nbsp;GS_DATA&nbsp;TO&nbsp;LS_KNKK.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;UPDATE&nbsp;ZEA_KNKK&nbsp;FROM&nbsp;LS_KNKK.<br />
+   </div>
+   <div class="codeComment">
+*ENDLOOP.<br />
+<br />
+   </div>
+   <div class="code">
+IF SY-SUBRC EQ 0.<br />
+&nbsp;&nbsp;COMMIT&nbsp;WORK&nbsp;AND&nbsp;WAIT.&nbsp;"저장성공<br />
+ELSE.<br />
+&nbsp;&nbsp;ROLLBACK&nbsp;WORK.&nbsp;"저장실패<br />
+ENDIF.<br />
+<br />
+ENDFORM.<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.5.0 - E.G.Mellodew. 1998-2024. Sap Release 754</td>
+   </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>LZEA_MM_FGTOP</title>
+<style type="text/css">
+.code{ font-family:"Courier New", Courier, monospace; color:#000; font-size:14px; background-color:#F2F4F7 }
+  .codeComment {font-family:"Courier New", Courier, monospace; color:#0000F0; font-size:14px; background-color:#F2F4F7 }
+  .normalBold{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:800 }
+  .normalBoldLarge{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for: LZEA_MM_FGTOP</h2>
+<h3> Description: [MM] 자재문서 SD 함수</h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="code">
+FUNCTION-POOL ZEA_MM_FG.                    "MESSAGE-ID ..<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;INCLUDE&nbsp;LZEA_MM_FGD...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;Local&nbsp;class&nbsp;definition<br />
+<br />
+   </div>
+   <div class="code">
+TABLES: ZEA_AUFK, ZEA_PPT020, ZEA_MMT140, ZEA_MMT150, ZEA_MMT090,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZEA_AFRU,&nbsp;ZEA_MMT100,&nbsp;ZEA_MMT010,&nbsp;ZEA_SDT110,&nbsp;ZEA_STPO,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZEA_MMT070,&nbsp;ZEA_MMT190.<br />
+<br />
+DATA: GT_AUFK TYPE TABLE OF ZEA_AUFK,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_AUFK&nbsp;TYPE&nbsp;ZEA_AUFK.<br />
+<br />
+DATA: GT_PPT020 TYPE TABLE OF ZEA_PPT020,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_PPT020&nbsp;TYPE&nbsp;ZEA_PPT020.<br />
+<br />
+&nbsp;&nbsp;DATA:&nbsp;BEGIN&nbsp;OF&nbsp;GS_DATA,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AUFNR&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_AFRU-AUFNR,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CHARG&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_AFRU-CHARG,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MATNR&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_AFRU-MATNR,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOMID&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_AFRU-BOMID,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EMPCODE&nbsp;TYPE&nbsp;ZEA_AFRU-EMPCODE,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WERKS&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_MMT070-WERKS,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCODE&nbsp;&nbsp;TYPE&nbsp;ZEA_MMT070-SCODE,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TSDAT&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_AFRU-TSDAT,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FNPD&nbsp;&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_AFRU-FNPD,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MEINS&nbsp;&nbsp;&nbsp;TYPE&nbsp;ZEA_AFRU-MEINS,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END&nbsp;OF&nbsp;GS_DATA.<br />
+<br />
+DATA GT_DATA LIKE TABLE OF GS_DATA.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;[SD]<br />
+   </div>
+   <div class="code">
+DATA: GT_SDT060 TYPE TABLE OF ZEA_SDT060,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_SDT060&nbsp;TYPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZEA_SDT060.<br />
+DATA: GT_SDT110 TYPE TABLE OF ZEA_SDT110,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_SDT110&nbsp;TYPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZEA_SDT110.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;[MM]<br />
+   </div>
+   <div class="code">
+DATA: GT_MMT140 TYPE TABLE OF ZEA_MMT140,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_MMT140&nbsp;TYPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZEA_MMT140.<br />
+DATA: GT_MMT150 TYPE TABLE OF ZEA_MMT150,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_MMT150&nbsp;TYPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZEA_MMT150.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;자재문서<br />
+   </div>
+   <div class="code">
+DATA : GT_MMT090 TYPE TABLE OF ZEA_MMT090 WITH HEADER LINE.<br />
+DATA: GS_MMT090 LIKE LINE OF GT_MMT090.<br />
+DATA : GT_MMT100 TYPE TABLE OF ZEA_MMT100 WITH HEADER LINE.<br />
+<br />
+DATA: GT_MMT190 TYPE TABLE OF ZEA_MMT190,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_MMT190&nbsp;TYPE&nbsp;ZEA_MMT190.<br />
+DATA: GT_MMT070 TYPE TABLE OF ZEA_MMT070,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GS_MMT070&nbsp;TYPE&nbsp;ZEA_MMT070.<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.5.0 - E.G.Mellodew. 1998-2024. Sap Release 754</td>
+   </tr>
+</table>
+</body>
+</html>

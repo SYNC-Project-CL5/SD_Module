@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ZEA_SD100</title>
+<style type="text/css">
+.code{ font-family:"Courier New", Courier, monospace; color:#000; font-size:14px; background-color:#F2F4F7 }
+  .codeComment {font-family:"Courier New", Courier, monospace; color:#0000F0; font-size:14px; background-color:#F2F4F7 }
+  .normalBold{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:800 }
+  .normalBoldLarge{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for: ZEA_SD100</h2>
+<h3> Description: [SD] 판매운영계획 조회 [완료] - ACA5-12 박지영</h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Report&nbsp;ZEA_TR_TEM<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;[SD]&nbsp;판매운영계획&nbsp;조회&nbsp;[진행중]&nbsp;-&nbsp;ACA5-12&nbsp;박지영<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+REPORT zea_sd100 MESSAGE-ID ZEA_MSG.<br />
+<br />
+include <a href ="zea_sd100_top.html">ZEA_SD100_TOP</a>.<br />
+   </div>
+   <div class="codeComment">
+*INCLUDE&nbsp;YE12_PJ043_TOP.<br />
+*INCLUDE&nbsp;zea_tr_tem_top.&nbsp;&nbsp;"&nbsp;전역변수&nbsp;선언<br />
+   </div>
+   <div class="code">
+include <a href ="zea_sd100_scr.html">ZEA_SD100_SCR</a>.<br />
+   </div>
+   <div class="codeComment">
+*INCLUDE&nbsp;YE12_PJ043_SCR.<br />
+*INCLUDE&nbsp;zea_tr_tem_scr.&nbsp;&nbsp;"&nbsp;Selection&nbsp;Screen&nbsp;구성<br />
+   </div>
+   <div class="code">
+include <a href ="zea_sd100_cls.html">ZEA_SD100_CLS</a>.<br />
+   </div>
+   <div class="codeComment">
+*INCLUDE&nbsp;YE12_PJ043_CLS.<br />
+*INCLUDE&nbsp;zea_tr_tem_cls.&nbsp;&nbsp;"&nbsp;Local&nbsp;Class&nbsp;정의구현<br />
+   </div>
+   <div class="code">
+include <a href ="zea_sd100_pbo.html">ZEA_SD100_PBO</a>.<br />
+   </div>
+   <div class="codeComment">
+*INCLUDE&nbsp;YE12_PJ043_PBO.<br />
+*INCLUDE&nbsp;zea_tr_tem_pbo.&nbsp;&nbsp;"&nbsp;Screen&nbsp;출력&nbsp;전&nbsp;Logic&nbsp;처리&nbsp;/&nbsp;PBO<br />
+   </div>
+   <div class="code">
+include <a href ="zea_sd100_pai.html">ZEA_SD100_PAI</a>.<br />
+   </div>
+   <div class="codeComment">
+*INCLUDE&nbsp;YE12_PJ043_PAI.<br />
+*INCLUDE&nbsp;zea_tr_tem_pai.&nbsp;&nbsp;"&nbsp;Screen&nbsp;출력&nbsp;후&nbsp;사용자에&nbsp;의한&nbsp;명령&nbsp;처리<br />
+   </div>
+   <div class="code">
+include <a href ="zea_sd100_f01.html">ZEA_SD100_F01</a>.<br />
+   </div>
+   <div class="codeComment">
+*INCLUDE&nbsp;YE12_PJ043_F01.<br />
+*INCLUDE&nbsp;zea_tr_tem_f01.&nbsp;&nbsp;"&nbsp;Form&nbsp;Subroutines&nbsp;모음<br />
+<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;INITIALIZATION<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+INITIALIZATION.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*----------------------------------------------------------------------*<br />
+*&nbsp;AT&nbsp;SELECTION&nbsp;SCREEN&nbsp;OUTPUT<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+AT SELECTION-SCREEN OUTPUT.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*----------------------------------------------------------------------*<br />
+*&nbsp;AT&nbsp;SELECTION&nbsp;SCREEN<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+AT SELECTION-SCREEN.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*----------------------------------------------------------------------*<br />
+*&nbsp;START-OF-SELECTION<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+START-OF-SELECTION.<br />
+&nbsp;&nbsp;PERFORM&nbsp;get_data.<br />
+<br />
+&nbsp;&nbsp;CALL&nbsp;SCREEN&nbsp;'0100'.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*GUI&nbsp;Texts<br />
+*----------------------------------------------------------<br />
+*&nbsp;T0100&nbsp;--&gt;&nbsp;한국타이어&nbsp;판매운영계획<br />
+<br />
+<br />
+*Messages<br />
+*----------------------------------------------------------<br />
+*<br />
+*&nbsp;Message&nbsp;class:&nbsp;ZEA_MSG<br />
+*000&nbsp;&nbsp;&nbsp;&&nbsp;&&nbsp;&&nbsp;&<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.5.0 - E.G.Mellodew. 1998-2024. Sap Release 754</td>
+   </tr>
+</table>
+</body>
+</html>

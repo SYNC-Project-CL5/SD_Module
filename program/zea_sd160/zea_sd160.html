@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ZEA_SD160</title>
+<style type="text/css">
+.code{ font-family:"Courier New", Courier, monospace; color:#000; font-size:14px; background-color:#F2F4F7 }
+  .codeComment {font-family:"Courier New", Courier, monospace; color:#0000F0; font-size:14px; background-color:#F2F4F7 }
+  .normalBold{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:800 }
+  .normalBoldLarge{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for: ZEA_SD160</h2>
+<h3> Description: [SD] 고객 여신 조회 [진행중] - ACA5-12 박지영</h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Report&nbsp;ZEA_SD160<br />
+*&---------------------------------------------------------------------*<br />
+*&<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+REPORT ZEA_SD160 MESSAGE-ID ZEA_MSG.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*프로그램&nbsp;설명&nbsp;:&nbsp;B2B&nbsp;고객별&nbsp;여신&nbsp;현황을&nbsp;계산하고&nbsp;잔액을&nbsp;조회하는&nbsp;프로그램<br />
+*-&nbsp;승인된&nbsp;판매오더중&nbsp;STATUS4에&nbsp;'X'&nbsp;값이&nbsp;입력되지&nbsp;않은&nbsp;건(수금완료되지&nbsp;않은&nbsp;건들)&nbsp;만&nbsp;조회하여&nbsp;총&nbsp;구매금액(TOAMT)&nbsp;을&nbsp;합산한다.<br />
+*-&nbsp;합산된&nbsp;금액을&nbsp;고객여신&nbsp;테이블(ZEA_KNKK)에서&nbsp;여신&nbsp;한도(KLIMK)필드에서&nbsp;차액을&nbsp;구하고&nbsp;여신&nbsp;잔액으로&nbsp;입력한다.<br />
+*-&nbsp;잔액의&nbsp;비율에&nbsp;따라&nbsp;LED로&nbsp;표시한다.(잔액이&nbsp;30%부터&nbsp;노란색&nbsp;LED,&nbsp;5%부터&nbsp;빨간색&nbsp;LED&nbsp;표시)<br />
+*-&nbsp;SCR에서&nbsp;고객을&nbsp;검색하고&nbsp;검색된&nbsp;고객의&nbsp;데이터(ZEA_KNA1)와&nbsp;함께&nbsp;여신데이터(ZEA_KNKK)를&nbsp;보여준다.<br />
+<br />
+   </div>
+   <div class="code">
+include <a href ="zea_sd160_top.html">ZEA_SD160_TOP</a>.<br />
+include <a href ="zea_sd160_scr.html">ZEA_SD160_SCR</a>.<br />
+include <a href ="zea_sd160_cls.html">ZEA_SD160_CLS</a>.<br />
+include <a href ="zea_sd160_pbo.html">ZEA_SD160_PBO</a>.<br />
+include <a href ="zea_sd160_pai.html">ZEA_SD160_PAI</a>.<br />
+include <a href ="zea_sd160_f01.html">ZEA_SD160_F01</a>.<br />
+<br />
+INITIALIZATION.<br />
+<br />
+AT SELECTION-SCREEN OUTPUT.<br />
+<br />
+&nbsp;&nbsp;MESSAGE&nbsp;S039.<br />
+<br />
+AT SELECTION-SCREEN.<br />
+<br />
+START-OF-SELECTION.<br />
+&nbsp;&nbsp;PERFORM&nbsp;SELECT_DATA.<br />
+&nbsp;&nbsp;PERFORM&nbsp;DISPLAY_DATA.<br />
+&nbsp;&nbsp;PERFORM&nbsp;MODIFY_DATA.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*GUI&nbsp;Texts<br />
+*----------------------------------------------------------<br />
+*&nbsp;T0100&nbsp;--&gt;&nbsp;[SD]&nbsp;고객&nbsp;여신현황&nbsp;조회<br />
+*&nbsp;T0110&nbsp;--&gt;&nbsp;&&nbsp;미결&nbsp;내역<br />
+<br />
+*Text&nbsp;elements<br />
+*----------------------------------------------------------<br />
+*&nbsp;T01&nbsp;고객&nbsp;검색<br />
+<br />
+<br />
+*Selection&nbsp;texts<br />
+*----------------------------------------------------------<br />
+*&nbsp;PA_CUS&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<br />
+<br />
+<br />
+*Messages<br />
+*----------------------------------------------------------<br />
+*<br />
+*&nbsp;Message&nbsp;class:&nbsp;Hard&nbsp;coded<br />
+*&nbsp;&nbsp;&nbsp;컨테이너&nbsp;생성에&nbsp;실패했습니다.<br />
+*<br />
+*&nbsp;Message&nbsp;class:&nbsp;ZEA_MSG<br />
+*000&nbsp;&nbsp;&nbsp;&&nbsp;&&nbsp;&&nbsp;&<br />
+*039&nbsp;&nbsp;&nbsp;여신&nbsp;현황을&nbsp;조회할&nbsp;고객코드를&nbsp;입력해주세요.<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.5.0 - E.G.Mellodew. 1998-2024. Sap Release 754</td>
+   </tr>
+</table>
+</body>
+</html>

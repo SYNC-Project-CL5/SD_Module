@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Dictionary object- ZEA_SDS010</title>
+<style type="text/css">
+  th{text-align:left}
+  .cell{
+     font-family:"Courier New", Courier, monospace;
+     color:#000;
+     font-size:12px;
+     background-color:#F2F4F7;
+  }
+  .cell td { border: thin solid #ccc; }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+  <table class="outerTable">
+    <tr>
+      <td><h2>Table: ZEA_SDS010</h2>
+  <h3>Description: [SD] 직영점별 판매실적 조회를 위한 스트럭쳐</h3></td>
+    </tr>
+    <tr>
+      <td><!--This is where our main table begins  -->
+<table class="innerTable">
+<tr>
+  <th>Row</th>
+  <th>Field name</th>
+  <th>Position</th>
+  <th>Key</th>
+  <th>Data element</th>
+  <th>Domain</th>
+  <th>Datatype</th>
+  <th>Length</th>
+  <th>Lowercase</th>
+  <th>Domain text</th>
+</tr>
+<tr class="cell">
+  <td> 1</td>
+  <td>SV_YEAR</td>
+  <td>1</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SV_YEAR</td>
+  <td>ZEA_SP_YEAR</td>
+  <td>CHAR</td>
+  <td>4</td>
+  <td>&nbsp;</td>
+  <td>판매실적 년도</td>
+</tr>
+<tr class="cell">
+  <td> 2</td>
+  <td>WERKS</td>
+  <td>2</td>
+  <td>&nbsp;</td>
+  <td>ZEA_WERKS</td>
+  <td>ZEA_WERKS</td>
+  <td>CHAR</td>
+  <td>5</td>
+  <td>&nbsp;</td>
+  <td>플랜트ID</td>
+</tr>
+<tr class="cell">
+  <td> 3</td>
+  <td>PNAME1</td>
+  <td>3</td>
+  <td>&nbsp;</td>
+  <td>ZEA_PNAME1</td>
+  <td>ZEA_PNAME1</td>
+  <td>CHAR</td>
+  <td>30</td>
+  <td>&nbsp;</td>
+  <td>플랜트명</td>
+</tr>
+<tr class="cell">
+  <td> 4</td>
+  <td>MATNR</td>
+  <td>4</td>
+  <td>&nbsp;</td>
+  <td>ZEA_MATNR</td>
+  <td>ZEA_MATNR</td>
+  <td>CHAR</td>
+  <td>40</td>
+  <td>&nbsp;</td>
+  <td>자재코드</td>
+</tr>
+<tr class="cell">
+  <td> 5</td>
+  <td>MAKTX</td>
+  <td>5</td>
+  <td>&nbsp;</td>
+  <td>ZEA_MAKTX</td>
+  <td>ZEA_MAKTX</td>
+  <td>CHAR</td>
+  <td>40</td>
+  <td>&nbsp;</td>
+  <td>자재명</td>
+</tr>
+<tr class="cell">
+  <td> 6</td>
+  <td>SAVQU</td>
+  <td>6</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU</td>
+  <td>ZEA_SAPQU</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>총 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td> 7</td>
+  <td>MEINS</td>
+  <td>7</td>
+  <td>&nbsp;</td>
+  <td>ZEA_MEINS</td>
+  <td>ZEA_MEINS</td>
+  <td>UNIT</td>
+  <td>3</td>
+  <td>X</td>
+  <td>단위</td>
+</tr>
+<tr class="cell">
+  <td> 8</td>
+  <td>TOTSAL</td>
+  <td>8</td>
+  <td>&nbsp;</td>
+  <td>ZEA_TOTSAL</td>
+  <td>ZEA_TOTSAL</td>
+  <td>CURR</td>
+  <td>23</td>
+  <td>&nbsp;</td>
+  <td>총 매출 실적</td>
+</tr>
+<tr class="cell">
+  <td> 9</td>
+  <td>WAERS</td>
+  <td>9</td>
+  <td>&nbsp;</td>
+  <td>ZEA_WAERS</td>
+  <td>ZEA_WAERS</td>
+  <td>CUKY</td>
+  <td>5</td>
+  <td>&nbsp;</td>
+  <td>통화코드</td>
+</tr>
+<tr class="cell">
+  <td>10</td>
+  <td>SVQTY1</td>
+  <td>10</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU1</td>
+  <td>ZEA_SAVQU1</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>1월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>11</td>
+  <td>SVQTY2</td>
+  <td>11</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU2</td>
+  <td>ZEA_SAVQU2</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>2월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>12</td>
+  <td>SVQTY3</td>
+  <td>12</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU3</td>
+  <td>ZEA_SAVQU3</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>3월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>13</td>
+  <td>SVQTY4</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU4</td>
+  <td>ZEA_SAVQU4</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>4월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>14</td>
+  <td>SVQTY5</td>
+  <td>14</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU5</td>
+  <td>ZEA_SAVQU5</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>5월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>15</td>
+  <td>SVQTY6</td>
+  <td>15</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU6</td>
+  <td>ZEA_SAVQU6</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>6월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>16</td>
+  <td>SVQTY7</td>
+  <td>16</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU7</td>
+  <td>ZEA_SAVQU7</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>7월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>17</td>
+  <td>SVQTY8</td>
+  <td>17</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU8</td>
+  <td>ZEA_SAVQU8</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>8월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>18</td>
+  <td>SVQTY9</td>
+  <td>18</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU9</td>
+  <td>ZEA_SAVQU9</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>9월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>19</td>
+  <td>SVQTY10</td>
+  <td>19</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU10</td>
+  <td>ZEA_SAVQU10</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>10월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>20</td>
+  <td>SVQTY11</td>
+  <td>20</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU11</td>
+  <td>ZEA_SAVQU11</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>11월 판매 수량</td>
+</tr>
+<tr class="cell">
+  <td>21</td>
+  <td>SVQTY12</td>
+  <td>21</td>
+  <td>&nbsp;</td>
+  <td>ZEA_SAVQU12</td>
+  <td>ZEA_SAVQU12</td>
+  <td>QUAN</td>
+  <td>13</td>
+  <td>&nbsp;</td>
+  <td>12월 판매 수량</td>
+</tr>
+      </table>
+     </td>
+   </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.5.0 - E.G.Mellodew. 1998-2024. Sap Release 754</td>
+   </tr>
+</table>
+</body>
+</html>

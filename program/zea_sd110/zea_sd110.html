@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ZEA_SD110</title>
+<style type="text/css">
+.code{ font-family:"Courier New", Courier, monospace; color:#000; font-size:14px; background-color:#F2F4F7 }
+  .codeComment {font-family:"Courier New", Courier, monospace; color:#0000F0; font-size:14px; background-color:#F2F4F7 }
+  .normalBold{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:800 }
+  .normalBoldLarge{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for: ZEA_SD110</h2>
+<h3> Description: [SD] 출고문서 배치잡 프로그램 [완료] - ACA5-12 박지영</h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;Report&nbsp;ZEA_SD110<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;[SD]&nbsp;출고&nbsp;데이터&nbsp;배치잡&nbsp;프로그램&nbsp;[완료]&nbsp;-&nbsp;ACA5-12&nbsp;박지영<br />
+*&---------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+REPORT ZEA_SD110 MESSAGE-ID ZEA_MSG.<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;[개요]<br />
+*&nbsp;출하/운송&nbsp;관리&nbsp;Header&nbsp;테이블에서&nbsp;데이터를&nbsp;수정해서&nbsp;UPDATE&nbsp;해주기.<br />
+<br />
+*&nbsp;[순서]<br />
+*&nbsp;-출고되는&nbsp;건<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;(1.&nbsp;DB에서&nbsp;상태플래그가&nbsp;초록색인&nbsp;것에&nbsp;대해&nbsp;데이터를&nbsp;가져온다.)&nbsp;??<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;오늘(SY-DATUM)&nbsp;과&nbsp;비교하여&nbsp;일치하는것에&nbsp;대한&nbsp;값을&nbsp;SELECT한다.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;해당&nbsp;값을&nbsp;수정하여&nbsp;인터널&nbsp;테이블에&nbsp;넣어준다.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(출고일&nbsp;/&nbsp;배송도착예정일&nbsp;/&nbsp;배송상태&nbsp;/&nbsp;상태플래그2&nbsp;)<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;DB에&nbsp;데이터를&nbsp;UPDATE&nbsp;해준다.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;5.&nbsp;대금청구생성&nbsp;프로그램에서&nbsp;해당&nbsp;데이터들&nbsp;반영.<br />
+*&nbsp;-출고완료된&nbsp;건<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;오늘(SY-DATUM)&nbsp;EQ&nbsp;배송도착예정일(출고일+3)&nbsp;인&nbsp;건들에&nbsp;대한<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;데이터를&nbsp;가져온다.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;해당&nbsp;값을&nbsp;수정하여&nbsp;인터널&nbsp;테이블에&nbsp;넣어준다.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;배송상태&nbsp;/&nbsp;상태플래그2&nbsp;)<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;DB에&nbsp;데이터를&nbsp;UPDATE&nbsp;해준다.<br />
+<br />
+   </div>
+   <div class="code">
+include <a href ="zea_sd110_top.html">ZEA_SD110_TOP</a>.<br />
+   </div>
+   <div class="codeComment">
+*INCLUDE&nbsp;ZEA_SD110_SCR.<br />
+*INCLUDE&nbsp;ZEA_SD110_CLS.<br />
+   </div>
+   <div class="code">
+include <a href ="zea_sd110_pbo.html">ZEA_SD110_PBO</a>.<br />
+include <a href ="zea_sd110_pai.html">ZEA_SD110_PAI</a>.<br />
+include <a href ="zea_sd110_f01.html">ZEA_SD110_F01</a>.<br />
+<br />
+<br />
+   </div>
+   <div class="codeComment">
+*--------------------------------------------------------------------*<br />
+*&nbsp;출고되는&nbsp;건<br />
+*--------------------------------------------------------------------*<br />
+<br />
+   </div>
+   <div class="code">
+DATA: LT_SDT060 TYPE TABLE OF ZEA_SDT060,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LS_SDT060&nbsp;TYPE&nbsp;ZEA_SDT060,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LV_DADAT&nbsp;&nbsp;TYPE&nbsp;I,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LV_DATUM&nbsp;&nbsp;TYPE&nbsp;SY-DATUM.<br />
+<br />
+<br />
+DATA: IS_HEAD TYPE ZEA_MMT090,   " 출고문서 FI 함수 MM 함수<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_ITEM&nbsp;TYPE&nbsp;ZEA_MMY100.<br />
+<br />
+<br />
+<br />
+START-OF-SELECTION.<br />
+   </div>
+   <div class="codeComment">
+*--&nbsp;2.&nbsp;오늘(SY-DATUM)&nbsp;과&nbsp;비교하여&nbsp;일치하는것에&nbsp;대한&nbsp;값을&nbsp;SELECT한다.<br />
+   </div>
+   <div class="code">
+REFRESH GT_DATA.<br />
+<br />
+SELECT *<br />
+&nbsp;&nbsp;FROM&nbsp;ZEA_SDT060<br />
+&nbsp;&nbsp;INTO&nbsp;CORRESPONDING&nbsp;FIELDS&nbsp;OF&nbsp;TABLE&nbsp;GT_DATA<br />
+&nbsp;WHERE&nbsp;RQDAT&nbsp;EQ&nbsp;SY-DATUM.<br />
+<br />
+<br />
+   </div>
+   <div class="codeComment">
+*--3.&nbsp;해당&nbsp;값을&nbsp;수정하여&nbsp;인터널&nbsp;테이블에&nbsp;넣어준다.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(출고일&nbsp;/&nbsp;배송도착예정일&nbsp;/&nbsp;배송상태&nbsp;/&nbsp;상태플래그2&nbsp;)<br />
+<br />
+   </div>
+   <div class="code">
+LOOP AT GT_DATA INTO GS_DATA.<br />
+<br />
+&nbsp;&nbsp;GS_DATA-RETSU&nbsp;=&nbsp;'출고&nbsp;완료'.<br />
+&nbsp;&nbsp;GS_DATA-REDAT&nbsp;=&nbsp;SY-DATUM.<br />
+&nbsp;&nbsp;GS_DATA-DADAT&nbsp;=&nbsp;GS_DATA-REDAT&nbsp;+&nbsp;3.<br />
+&nbsp;&nbsp;GS_DATA-DESTU&nbsp;=&nbsp;'배송중'.<br />
+&nbsp;&nbsp;GS_DATA-STATUS2&nbsp;=&nbsp;'I'.<br />
+<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;CALL&nbsp;FUNCTION&nbsp;'ZEA_MM_SDFG'<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IV_SBELNR&nbsp;=&nbsp;GS_DATA-SBELNR&nbsp;&nbsp;&nbsp;"출고&nbsp;문서&nbsp;번호<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;IMPORTING<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ES_HEAD&nbsp;&nbsp;&nbsp;=&nbsp;IS_HEAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;[MM]&nbsp;자재문서&nbsp;Header<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ET_ITEM&nbsp;&nbsp;&nbsp;=&nbsp;IT_ITEM.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;자재문서&nbsp;ITEM&nbsp;테이블타입<br />
+*<br />
+*&nbsp;&nbsp;CALL&nbsp;FUNCTION&nbsp;'ZEA_FI_WL'<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS_HEAD&nbsp;=&nbsp;IS_HEAD&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;[MM]&nbsp;자재문서&nbsp;Header<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IT_ITEM&nbsp;=&nbsp;IT_ITEM.&nbsp;&nbsp;&nbsp;&nbsp;"&nbsp;자재문서&nbsp;ITEM&nbsp;테이블타입<br />
+<br />
+<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;MODIFY&nbsp;GT_DATA&nbsp;FROM&nbsp;GS_DATA.<br />
+&nbsp;&nbsp;MOVE-CORRESPONDING&nbsp;GS_DATA&nbsp;TO&nbsp;LS_SDT060.<br />
+&nbsp;&nbsp;UPDATE&nbsp;ZEA_SDT060&nbsp;FROM&nbsp;LS_SDT060.<br />
+<br />
+ENDLOOP.<br />
+<br />
+IF SY-SUBRC EQ 0.<br />
+&nbsp;&nbsp;COMMIT&nbsp;WORK&nbsp;AND&nbsp;WAIT.&nbsp;"저장성공<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;&nbsp;PERFORM&nbsp;DEC_TABLE_DATA.<br />
+*&nbsp;&nbsp;PERFORM&nbsp;DEC_BATCH_DATA.<br />
+   </div>
+   <div class="code">
+ELSE.<br />
+&nbsp;&nbsp;ROLLBACK&nbsp;WORK.&nbsp;"저장실패<br />
+ENDIF.<br />
+<br />
+<br />
+<br />
+   </div>
+   <div class="codeComment">
+*--------------------------------------------------------------------*<br />
+*&nbsp;출고완료된&nbsp;건<br />
+*--------------------------------------------------------------------*<br />
+<br />
+<br />
+*--&nbsp;1.&nbsp;오늘(SY-DATUM)&nbsp;EQ&nbsp;배송도착예정일(출고일+3)&nbsp;인&nbsp;건들에&nbsp;대한<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;데이터를&nbsp;가져온다.<br />
+   </div>
+   <div class="code">
+REFRESH GT_DATA.<br />
+<br />
+SELECT *<br />
+&nbsp;&nbsp;FROM&nbsp;ZEA_SDT060<br />
+&nbsp;&nbsp;INTO&nbsp;CORRESPONDING&nbsp;FIELDS&nbsp;OF&nbsp;TABLE&nbsp;GT_DATA<br />
+&nbsp;WHERE&nbsp;DADAT&nbsp;EQ&nbsp;SY-DATUM.<br />
+<br />
+<br />
+   </div>
+   <div class="codeComment">
+*--&nbsp;2.&nbsp;해당&nbsp;값을&nbsp;수정하여&nbsp;인터널&nbsp;테이블에&nbsp;넣어준다.<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;배송상태&nbsp;/&nbsp;상태플래그2&nbsp;)<br />
+<br />
+   </div>
+   <div class="code">
+LOOP AT GT_DATA INTO GS_DATA.<br />
+<br />
+&nbsp;&nbsp;GS_DATA-DESTU&nbsp;=&nbsp;'배송완료'.<br />
+&nbsp;&nbsp;GS_DATA-STATUS2&nbsp;=&nbsp;'O'.<br />
+<br />
+&nbsp;&nbsp;MODIFY&nbsp;GT_DATA&nbsp;FROM&nbsp;GS_DATA.<br />
+&nbsp;&nbsp;MOVE-CORRESPONDING&nbsp;GS_DATA&nbsp;TO&nbsp;LS_SDT060.<br />
+&nbsp;&nbsp;UPDATE&nbsp;ZEA_SDT060&nbsp;FROM&nbsp;LS_SDT060.<br />
+<br />
+ENDLOOP.<br />
+<br />
+IF SY-SUBRC EQ 0.<br />
+&nbsp;&nbsp;COMMIT&nbsp;WORK&nbsp;AND&nbsp;WAIT.&nbsp;"저장성공<br />
+ELSE.<br />
+&nbsp;&nbsp;ROLLBACK&nbsp;WORK.&nbsp;"저장실패<br />
+ENDIF.<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.5.0 - E.G.Mellodew. 1998-2024. Sap Release 754</td>
+   </tr>
+</table>
+</body>
+</html>

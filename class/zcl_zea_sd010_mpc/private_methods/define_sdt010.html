@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>DEFINE_SDT010</title>
+<style type="text/css">
+.code{ font-family:"Courier New", Courier, monospace; color:#000; font-size:14px; background-color:#F2F4F7 }
+  .codeComment {font-family:"Courier New", Courier, monospace; color:#0000F0; font-size:14px; background-color:#F2F4F7 }
+  .normalBold{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:800 }
+  .normalBoldLarge{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for: DEFINE_SDT010</h2>
+<h3> Description: DEFINE_SDT010</h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="codeComment">
+**************************************************************************<br />
+*&nbsp;&nbsp;&nbsp;Method&nbsp;attributes.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<br />
+**************************************************************************<br />
+   </div>
+   <div class="code">
+Instantiation: Private<br />
+   </div>
+   <div class="codeComment">
+**************************************************************************<br />
+<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;method&nbsp;DEFINE_SDT010.<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generated&nbsp;code&nbsp;for&nbsp;the&nbsp;MODEL&nbsp;PROVIDER&nbsp;BASE&nbsp;CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&*<br />
+*&&nbsp;&nbsp;!!!NEVER&nbsp;MODIFY&nbsp;THIS&nbsp;CLASS.&nbsp;IN&nbsp;CASE&nbsp;YOU&nbsp;WANT&nbsp;TO&nbsp;CHANGE&nbsp;THE&nbsp;MODEL&nbsp;&nbsp;&*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DO&nbsp;THIS&nbsp;IN&nbsp;THE&nbsp;MODEL&nbsp;PROVIDER&nbsp;SUBCLASS!!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&*<br />
+*&---------------------------------------------------------------------*<br />
+<br />
+<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;data:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lo_annotation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;ref&nbsp;to&nbsp;/iwbep/if_mgw_odata_annotation,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"#EC&nbsp;NEEDED<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lo_entity_type&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;ref&nbsp;to&nbsp;/iwbep/if_mgw_odata_entity_typ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"#EC&nbsp;NEEDED<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lo_complex_type&nbsp;&nbsp;&nbsp;type&nbsp;ref&nbsp;to&nbsp;/iwbep/if_mgw_odata_cmplx_type,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"#EC&nbsp;NEEDED<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lo_property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;ref&nbsp;to&nbsp;/iwbep/if_mgw_odata_property,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"#EC&nbsp;NEEDED<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lo_entity_set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;ref&nbsp;to&nbsp;/iwbep/if_mgw_odata_entity_set.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"#EC&nbsp;NEEDED<br />
+<br />
+   </div>
+   <div class="codeComment">
+***********************************************************************************************************************************<br />
+*&nbsp;&nbsp;&nbsp;ENTITY&nbsp;-&nbsp;SDT010<br />
+***********************************************************************************************************************************<br />
+<br />
+   </div>
+   <div class="code">
+lo_entity_type = model-&gt;create_entity_type( iv_entity_type_name = 'SDT010' iv_def_entity_set = abap_false ). "#EC NOTEXT<br />
+<br />
+   </div>
+   <div class="codeComment">
+***********************************************************************************************************************************<br />
+*Properties<br />
+***********************************************************************************************************************************<br />
+<br />
+   </div>
+   <div class="code">
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'SvYear' iv_abap_fieldname = 'SV_YEAR' ). "#EC NOTEXT<br />
+lo_property-&gt;set_is_key( ).<br />
+lo_property-&gt;set_type_edm_string( ).<br />
+lo_property-&gt;set_maxlength( iv_max_length = 4 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Werks' iv_abap_fieldname = 'WERKS' ). "#EC NOTEXT<br />
+lo_property-&gt;set_is_key( ).<br />
+lo_property-&gt;set_type_edm_string( ).<br />
+lo_property-&gt;set_maxlength( iv_max_length = 5 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Matnr' iv_abap_fieldname = 'MATNR' ). "#EC NOTEXT<br />
+lo_property-&gt;set_is_key( ).<br />
+lo_property-&gt;set_type_edm_string( ).<br />
+lo_property-&gt;set_maxlength( iv_max_length = 40 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Savqu' iv_abap_fieldname = 'SAVQU' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Meins' iv_abap_fieldname = 'MEINS' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_string( ).<br />
+lo_property-&gt;set_maxlength( iv_max_length = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Totsal' iv_abap_fieldname = 'TOTSAL' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 23 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Netpr' iv_abap_fieldname = 'NETPR' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 24 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Waers' iv_abap_fieldname = 'WAERS' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_string( ).<br />
+lo_property-&gt;set_maxlength( iv_max_length = 5 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty1' iv_abap_fieldname = 'SVQTY1' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty2' iv_abap_fieldname = 'SVQTY2' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty3' iv_abap_fieldname = 'SVQTY3' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty4' iv_abap_fieldname = 'SVQTY4' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty5' iv_abap_fieldname = 'SVQTY5' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty6' iv_abap_fieldname = 'SVQTY6' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty7' iv_abap_fieldname = 'SVQTY7' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty8' iv_abap_fieldname = 'SVQTY8' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty9' iv_abap_fieldname = 'SVQTY9' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty10' iv_abap_fieldname = 'SVQTY10' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty11' iv_abap_fieldname = 'SVQTY11' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+lo_property = lo_entity_type-&gt;create_property( iv_property_name = 'Svqty12' iv_abap_fieldname = 'SVQTY12' ). "#EC NOTEXT<br />
+lo_property-&gt;set_type_edm_decimal( ).<br />
+lo_property-&gt;set_precison( iv_precision = 3 ). "#EC NOTEXT<br />
+lo_property-&gt;set_maxlength( iv_max_length = 13 ). "#EC NOTEXT<br />
+lo_property-&gt;set_creatable( abap_false ).<br />
+lo_property-&gt;set_updatable( abap_false ).<br />
+lo_property-&gt;set_sortable( abap_false ).<br />
+lo_property-&gt;set_nullable( abap_false ).<br />
+lo_property-&gt;set_filterable( abap_false ).<br />
+lo_property-&gt;/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' )-&gt;add(<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'unicode'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_value&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'false'&nbsp;).<br />
+<br />
+lo_entity_type-&gt;bind_structure( iv_structure_name   = 'ZEA_SDT010'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iv_bind_conversions&nbsp;=&nbsp;'X'&nbsp;).&nbsp;"#EC&nbsp;NOTEXT<br />
+<br />
+<br />
+   </div>
+   <div class="codeComment">
+***********************************************************************************************************************************<br />
+*&nbsp;&nbsp;&nbsp;ENTITY&nbsp;SETS<br />
+***********************************************************************************************************************************<br />
+   </div>
+   <div class="code">
+lo_entity_set = lo_entity_type-&gt;create_entity_set( 'SDT010Set' ). "#EC NOTEXT<br />
+<br />
+lo_entity_set-&gt;set_creatable( abap_true ).<br />
+lo_entity_set-&gt;set_updatable( abap_true ).<br />
+lo_entity_set-&gt;set_deletable( abap_true ).<br />
+<br />
+lo_entity_set-&gt;set_pageable( abap_true ).<br />
+lo_entity_set-&gt;set_addressable( abap_true ).<br />
+lo_entity_set-&gt;set_has_ftxt_search( abap_true ).<br />
+lo_entity_set-&gt;set_subscribable( abap_true ).<br />
+lo_entity_set-&gt;set_filter_required( abap_true ).<br />
+&nbsp;&nbsp;endmethod.<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.5.0 - E.G.Mellodew. 1998-2024. Sap Release 754</td>
+   </tr>
+</table>
+</body>
+</html>
